@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Card({ imageSrc, title, description }) {
     return (
-        <div className="max-w-3xs rounded-lg shadow-md overflow-hidden bg-white">
+        <div className="min-h-[280px] w-[229px] rounded-lg shadow-md overflow-hidden bg-white">
             <img
                 src={imageSrc}
                 alt={title}
