@@ -1,5 +1,5 @@
 // Card.jsx
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 function Card({ imageSrc, title, description }) {
     return (
@@ -17,10 +17,10 @@ function Card({ imageSrc, title, description }) {
     );
 }
 
-/*Card.propTypes = {
+Card.propTypes = {
     imageSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-};*/
+};
 
 export default Card;
