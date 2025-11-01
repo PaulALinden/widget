@@ -1,7 +1,7 @@
 //CardContainer
 import Card from "./Card";
 import img from '../assets/swopti.svg'
-function CardContainer() {
+function CardContainer({title}) {
     const cards = [
         {
             imageSrc: img,
@@ -28,7 +28,7 @@ function CardContainer() {
     return (
         <article className="flex flex-col items-center justify-center flex">
 
-            <h1 className="text-center; font-bold text-2xl mb-10">Välj glastyp</h1>
+            <h1 className="text-center; font-bold text-2xl mb-10">{title}</h1>
 
             <section className="flex flex-row flex-wrap justify-center gap-4 max-h-80">
                 {cards.map((card, index) => (

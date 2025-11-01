@@ -1,3 +1,5 @@
+import { FaCheck } from "react-icons/fa";
+
 export default function HorizontalStepper({
   steps = [],
   current = 0,
@@ -41,11 +43,11 @@ export default function HorizontalStepper({
               <button
                 type="button"
                 onClick={() => handleClick(i)}
-                className={`relative z-10 flex items-center justify-center w-8 h-8 rounded-full border-2 ${isDone ? 'border-[#043451]  bg-white' : isActive ? 'border-[#043451]  bg-white' : 'border-gray-300 bg-white'
+                className={`relative z-10 flex items-center justify-center w-8 h-8 rounded-full border-2 ${isDone ? 'border-[#043451]  bg-[#043451]' : isActive ? 'border-[#043451]  bg-white' : 'border-gray-300 bg-white'
                   } ${clickable ? 'cursor-pointer' : 'cursor-default'}`}
               >
                 {isDone ? (
-                  <span className="w-2 h-2 bg-white rounded-full" />
+                  <FaCheck className="text-white"/>
                 ) : isActive ? (
                   <span className="w-2 h-2 bg-[#043451] rounded-full" />
                 ) : null}
