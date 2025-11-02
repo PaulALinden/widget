@@ -1,31 +1,55 @@
-import React from 'react';
-import CardContainer from './components/CardContainer'
+import { useEffect } from 'react';
+import CardContainer from './components/CardContainer';
 import HorizontalStepper from './components/HorizontalStepper';
+import PriceBar from './components/PriceBar';
+import UploadStep from './components/UploadStep'
+import SummaryStep from './components/SummaryStep'
+import { useConfigStore } from './store/configStore';
+
 function App() {
-let a = 10;
-  const [idx, setIdx] = React.useState(1);
+  const { config, loadConfig, currentStep } = useConfigStore();
+
+  useEffect(() => {
+    loadConfig('store_1');
+  }, []);
+
+  if (!config) return <div>Loading...</div>;
+
   const steps = [
-    { title: 'Välj glastyp', subtitle: 'Steg 1' },
-    { title: 'Välj toning', subtitle: 'Steg 2' },
-    { title: 'Välj glas', subtitle: 'Steg 3' },
-    { title: 'Vilken typ av båge har du?', subtitle: 'Steg 4' },
-    { title: 'Lägg till dina styrkor', subtitle: 'Steg 5' },
-    { title: 'Vänligen gå igenom din order', subtitle: 'Klart' },
+    { title: 'Välj glastyp', data: config.glassTypes, key: 'glassType' },
+    { title: 'Välj toning', data: config.tints, key: 'tint' },
+    { title: 'Vilken typ av båge?', data: config.frames, key: 'frame' },
+    { title: 'Ladda upp synstyrka', type: 'upload' },
+    { title: 'Granska din order', type: 'summary' },
   ];
+
+  const currentStepData = steps[currentStep];
 
   return (
     <div className="min-h-screen w-screen bg-[#f1e4de] flex flex-col justify-between gap-6">
-      <section className="h-24 w-full  flex items-center justify-center">
-        <HorizontalStepper steps={steps} current={idx} onChange={setIdx}></HorizontalStepper>
+      <section className="h-24 w-full flex items-center justify-center">
+        <HorizontalStepper
+          steps={steps}
+          current={currentStep}
+          clickable={false}  // Disable clicking på stepper
+        />
       </section>
 
-      <CardContainer title={steps[idx].title}></CardContainer>
+      {currentStepData.type === 'upload' ? (
+        <UploadStep />
+      ) : currentStepData.type === 'summary' ? (
+        <SummaryStep />
+      ) : (
+        <CardContainer
+          title={currentStepData.title}
+          data={currentStepData.data}
+          selectionKey={currentStepData.key}
+        />
+      )}
 
-      <section className="h-10 w-full flex items-center justify-center shadow-[0_-4px_10px_rgba(0,0,0,0.1)]">
-        <button className="cursor-pointer">{`Dina glas ${a}kr  ^`}</button>
-      </section>
+      <PriceBar />
     </div>
   );
 }
 
-export default App
+export default App;
