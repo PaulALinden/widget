@@ -1,0 +1,66 @@
+// src/components/SummaryStep.jsx
+import { useConfigStore } from '../store/configStore';
+
+function SummaryStep() {
+    const { config, selections, pricing } = useConfigStore();
+
+    const handleCheckout = () => {
+        // TODO: Stripe checkout senare
+        console.log('Checkout with:', selections, pricing);
+    };
+
+    return (
+        <article className="flex flex-col items-center justify-center">
+            <h1 className="font-bold text-2xl mb-10">Granska din order</h1>
+
+            <div className="bg-white p-8 rounded-lg shadow-md w-96">
+                <div className="space-y-4 mb-6">
+                    <div>
+                        <h3 className="font-semibold">Glastyp:</h3>
+                        <p>{config.glassTypes.find(g => g.id === selections.glassType)?.name || '-'}</p>
+                    </div>
+
+                    <div>
+                        <h3 className="font-semibold">Toning:</h3>
+                        <p>{config.tints.find(t => t.id === selections.tint)?.name || '-'}</p>
+                    </div>
+
+                    <div>
+                        <h3 className="font-semibold">Båge:</h3>
+                        <p>{config.frames.find(f => f.id === selections.frame)?.name || '-'}</p>
+                    </div>
+
+                    <hr />
+
+                    <div>
+                        <div className="flex justify-between">
+                            <span>Baspris:</span>
+                            <span>{pricing.basePrice} {config.currency}</span>
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Moms:</span>
+                            <span>{pricing.tax} {config.currency}</span>
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Frakt:</span>
+                            <span>{pricing.shipping} {config.currency}</span>
+                        </div>
+                        <div className="flex justify-between font-bold text-lg mt-2">
+                            <span>Totalt:</span>
+                            <span>{pricing.total} {config.currency}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    onClick={handleCheckout}
+                    className="cursor-pointer w-full bg-green-600 text-white py-3 px-4 rounded font-semibold"
+                >
+                    Gå till betalning
+                </button>
+            </div>
+        </article>
+    );
+}
+
+export default SummaryStep;
