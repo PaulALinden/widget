@@ -1,4 +1,4 @@
-import { FaCheck,FaArrowLeft  } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import arrow from "../assets/arrow.svg";
 import { useConfigStore } from '../store/configStore';
 

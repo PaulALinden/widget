@@ -1,6 +1,9 @@
 // src/components/UploadStep.jsx
 import { useState } from 'react';
 import { useConfigStore } from '../store/configStore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
+
 
 function UploadStep() {
     const [file, setFile] = useState(null);
@@ -24,7 +27,7 @@ function UploadStep() {
         <article className="flex flex-col items-center justify-center">
             <h1 className="font-bold text-2xl mb-10">Ladda upp synstyrka</h1>
 
-            <div className="bg-white p-8 rounded-lg shadow-md w-96">
+            <div className="p-8 rounded-lg border-2 w-96">
                 <input
                     type="file"
                     onChange={handleFileChange}
@@ -38,16 +41,11 @@ function UploadStep() {
                     <button
                         onClick={handleUpload}
                         disabled={!file}
-                        className="cursor-pointer flex-1 bg-blue-600 text-white py-2 px-4 rounded disabled:bg-gray-300"
+                        className="cursor-pointer flex-1 text-white py-2 px-4 rounded"
                     >
-                        Ladda upp
-                    </button>
-
-                    <button
-                        onClick={handleSkip}
-                        className="cursor-pointer flex-1 bg-gray-200 py-2 px-4 rounded"
-                    >
-                        Hoppa över
+                        <FontAwesomeIcon className='text-[#043451]' icon={faArrowUpFromBracket} />
+                        <p className='text-[#043451]'>Upload</p>
+                        
                     </button>
                 </div>
             </div>
