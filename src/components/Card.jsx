@@ -3,7 +3,7 @@ function Card({ imageSrc, title, description, onClick, selected }) {
     return (
         <div
             onClick={onClick}
-            className={`min-h-[280px] w-[229px] rounded-lg border-2 overflow-hidden hover:bg-[#fafafb] cursor-pointer text-center ${selected ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
+            className={`min-h-[280px] w-[229px] rounded-lg border-2 overflow-hidden hover:bg-[#fafafb] cursor-pointer text-center border-gray-300'
                 }`}
         >
             {imageSrc && (
