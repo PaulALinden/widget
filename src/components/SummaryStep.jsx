@@ -13,7 +13,7 @@ function SummaryStep() {
         <article className="flex flex-col items-center justify-center">
             <h1 className="font-bold text-2xl mb-10">Granska din order</h1>
 
-            <div className="bg-white p-8 rounded-lg shadow-md w-96">
+            <div className="p-8 rounded-lg border-2 w-96">
                 <div className="space-y-4 mb-6">
                     <div>
                         <h3 className="font-semibold">Glastyp:</h3>
@@ -54,7 +54,7 @@ function SummaryStep() {
 
                 <button
                     onClick={handleCheckout}
-                    className="cursor-pointer w-full bg-green-600 text-white py-3 px-4 rounded font-semibold"
+                    className="cursor-pointer w-full bg-[#043451] text-white py-3 px-4 rounded font-semibold"
                 >
                     Gå till betalning
                 </button>
