@@ -6,12 +6,15 @@ export const useConfigStore = create((set, get) => ({
     config: null,
     selections: {},
     pricing: { total: 0 },
-    currentStep: 0,  // Lägg till denna
+    currentStep: 0,
+    file: null, 
 
     loadConfig: async (storeId) => {
         const response = await productsApi.getStoreConfig(storeId);
         set({ config: response.data, storeId });
     },
+
+    setFile: (file) => set({ file }), 
 
     updateSelection: async (key, value) => {
         set((state) => ({
