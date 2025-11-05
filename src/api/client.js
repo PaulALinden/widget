@@ -10,6 +10,10 @@ const apiClient = axios.create({
     }
 });
 
+function handleError(error) { 
+    console.error(error);
+}
+
 // Lägg till interceptors (middleware) // ← Config
 apiClient.interceptors.response.use(
     (response) => response.data,
