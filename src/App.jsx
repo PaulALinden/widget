@@ -6,11 +6,11 @@ import UploadStep from './components/UploadStep'
 import SummaryStep from './components/SummaryStep'
 import { useConfigStore } from './store/configStore';
 
-function App() {
+function App({ storeId = 'store_1' }) {
   const { config, loadConfig, currentStep } = useConfigStore();
 
   useEffect(() => {
-    loadConfig('store_1');
+    loadConfig(storeId);
   }, []);
 
   if (!config) return <div>Loading...</div>;
