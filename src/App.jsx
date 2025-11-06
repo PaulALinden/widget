@@ -5,11 +5,12 @@ import HorizontalStepper from './components/HorizontalStepper';
 import PriceBar from './components/PriceBar';
 import UploadStep from './components/UploadStep';
 import SummaryStep from './components/SummaryStep';
+import Spinner from './components/Spinner';
 import { useConfigStore } from './store/configStore';
 import { getTranslations } from './utils/translations';
 
 function App() {
-  const { config, loadConfig, currentStep, currency } = useConfigStore();
+  const { config, loadConfig, currentStep } = useConfigStore();
 
   useEffect(() => {
     loadConfig();
@@ -17,17 +18,10 @@ function App() {
 
   if (!config)
     return (
-      <div className="min-h-screen w-screen bg-[#f1e4de] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#043451]"></div>
-          <p className="text-[#043451] font-semibold">
-            {currency === 'sek' ? 'Laddar...' : 'Loading...'}
-          </p>
-        </div>
-      </div>
+      <Spinner/>
     );
 
-  const t = getTranslations(currency);
+  const t = getTranslations(import.meta.env.VITE_LANGUAGE);
   const steps = [
     { title: t.steps[0].title, data: config.glassTypes, key: 'glassType' },
     { title: t.steps[1].title, data: config.tints, key: 'tint' },
@@ -54,7 +48,7 @@ function App() {
           selectionKey={currentStepData.key}
         />
       )}
-      <PriceBar />
+      <PriceBar/>
     </div>
   );
 }
