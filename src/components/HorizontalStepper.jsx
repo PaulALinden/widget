@@ -6,6 +6,7 @@ export default function HorizontalStepper({
   steps = [],
   current = 0,
 }) {
+
   const prevStep = useConfigStore((state) => state.prevStep);
 
   if (!Array.isArray(steps) || steps.length === 0) return null;
