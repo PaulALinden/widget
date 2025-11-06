@@ -70,6 +70,7 @@ const translations = {
     },
 };
 
-export const getTranslations = (currency) => {
-    return currency === 'sek' ? translations.sv : translations.en;
+export const getTranslations = (lang) => {
+    console.log(lang);
+    return lang === 'swe' ? translations.sv : translations.en;
 };
