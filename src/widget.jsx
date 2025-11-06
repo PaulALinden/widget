@@ -15,7 +15,7 @@ window.OpticalWidget = {
         const root = createRoot(container);
         root.render(
             <React.StrictMode>
-                <App storeId={options.storeId || 'store_1'} />
+                <App storeId={options.storeId} />
             </React.StrictMode>
         );
     }
@@ -23,6 +23,5 @@ window.OpticalWidget = {
 
 // Auto-mount om element finns
 if (document.getElementById('optical-widget')) {
-    const storeId = document.getElementById('optical-widget').dataset.storeId;
-    window.OpticalWidget.mount('optical-widget', { storeId });
+    window.OpticalWidget.mount('optical-widget');
 }

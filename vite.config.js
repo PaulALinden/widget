@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   define: {
-    'process.env': {}  // ← Lägg till denna
+    'process.env': {}  
   },
   build: {
     lib: {
@@ -22,6 +22,6 @@ export default defineConfig({
     }
   },
   preview: {
-    port: 8080
+    port: 5173
   }
 });
