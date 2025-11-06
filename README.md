@@ -76,10 +76,3 @@ npm run build
 ```
 
 2. Servera innehållet i `dist/` med valfri statisk-server eller deploy-tjänst (Netlify, Vercel, Azure Static Web Apps, GitHub Pages med lämplig setup).
-
-## Förslag på nästa steg
-
-- Lägg till en `LICENSE` (t.ex. MIT) om du vill att andra ska kunna använda/kopiera koden.
-- Lägg till konfigurations-exempel (`.env.example`) för Stripe-nycklar och API-endpoints.
-- Skriv några enhetstester för kritiska komponenter och lägg till GitHub Actions för CI.
-- Skapa tydligare README-avsnitt för API-kontrakt och eventuella miljövariabler.
