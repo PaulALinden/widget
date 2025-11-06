@@ -40,7 +40,7 @@ function PriceBar() {
                 <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-1/3 bg-white rounded-lg shadow-xl p-6 z-50">
                     <button
                         onClick={() => setIsOpen(false)}
-                        className="absolute top-4 right-4 hover:bg-gray-100 p-2 rounded"
+                        className="absolute top-4 right-4 cursor-pointer hover:bg-gray-100 p-2 rounded"
                     >
                         <FaTimes />
                     </button>
@@ -88,25 +88,29 @@ function PriceBar() {
             )}
             {/* PriceBar */}
             <section className="h-10 w-full flex items-center justify-between px-4 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] relative z-30">
-                <div className="flex-1"></div>
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="cursor-pointer font-semibold hover:text-blue-600 transition"
-                >
-                    {currency === 'sek' ? 'Dina glas' : 'Your glasses'} {pricing.total || 0} {config?.currency || 'SEK'} {isOpen ? '▼' : '▲'}
-                </button>
-                <div className="flex-1 flex justify-end">
-                    {isUploadStep && (
+                {currentStep !== 4 && (
+                    <>
+                        <div className="flex-1"></div>
                         <button
-                            onClick={handleUpload}
-                            disabled={!file}
-                            className="cursor-pointer bg-[#043451] text-white px-4 py-1 rounded flex items-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-[#032a3d] transition"
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="cursor-pointer font-semibold text-[#043451] transition"
                         >
-                            <FaUpload />
-                            {t.uploadStep?.uploadPrompt || 'Upload'}
+                            {currency === 'sek' ? 'Dina glas' : 'Your glasses'} {pricing.total || 0} {config?.currency || 'SEK'} {isOpen ? '▼' : '▲'}
                         </button>
-                    )}
-                </div>
+                        <div className="flex-1 flex justify-end">
+                            {isUploadStep && (
+                                <button
+                                    onClick={handleUpload}
+                                    disabled={!file}
+                                    className="cursor-pointer bg-[#043451] text-white px-4 py-1 rounded flex items-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-[#032a3d] transition"
+                                >
+                                    <FaUpload />
+                                    {t.uploadStep?.uploadPrompt || 'Upload'}
+                                </button>
+                            )}
+                        </div>
+                    </>
+                )}
             </section>
         </>
     );

@@ -11,7 +11,7 @@ function CardContainer({ title, data, selectionKey }) {
 
     return (
         <article className="flex flex-col items-center justify-center">
-            <h1 className="font-bold text-2xl mb-10">{title}</h1>
+            <h1 className="font-bold text-2xl text-[#043451] mb-10">{title}</h1>
             <section className="flex flex-row flex-wrap justify-center gap-4 max-h-80">
                 {data.map((item) => (
                     <Card
