@@ -20,10 +20,10 @@ function UploadStep() {
 
     return (
         <article className="flex flex-col items-center justify-center">
-            <h1 className="font-bold text-2xl mb-10">{t.title}</h1>
+            <h1 className="font-bold text-2xl mb-10 text-[#043451]">{t.title}</h1>
             <div
                 onClick={handleCardClick}
-                className="p-8 rounded-lg border-2 w-96 cursor-pointer hover:bg-white"
+                className="p-8 rounded-lg border-2 border-[#043451] w-96 cursor-pointer hover:bg-white"
             >
                 <input
                     ref={fileInputRef}
