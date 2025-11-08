@@ -89,7 +89,7 @@ function PriceBar() {
                             onClick={() => setIsOpen(!isOpen)}
                             className="cursor-pointer font-semibold text-[#043451] transition"
                         >
-                            {t.priceBar.buttonText} {pricing.basePrice || 0} {t.priceBar.currency} {isOpen ? t.priceBar.toggleOpen : t.priceBar.toggleClose}
+                            {t.priceBar.buttonText} {pricing.basePrice || 0} {config?.currency} {isOpen ? t.priceBar.toggleOpen : t.priceBar.toggleClose}
                         </button>
                         <div className="flex-1 flex justify-end">
                             {isUploadStep && (

@@ -37,19 +37,19 @@ function SummaryStep() {
                     <div>
                         <div className="flex justify-between">
                             <span>{t.summaryStep.base}</span>
-                            <span>{pricing.basePrice} {t.priceBar.currency}</span>
+                            <span>{pricing.basePrice} {config.currency}</span>
                         </div>
                         <div className="flex justify-between">
                             <span>{t.summaryStep.tax}</span>
-                            <span>{pricing.tax} {t.priceBar.currency}</span>
+                            <span>{pricing.tax} {config.currency}</span>
                         </div>
                         <div className="flex justify-between">
                             <span>{t.summaryStep.shipping}</span>
-                            <span>{pricing.shipping} {t.priceBar.currency}</span>
+                            <span>{pricing.shipping} {config.currency}</span>
                         </div>
                         <div className="flex justify-between font-bold text-lg mt-2">
                             <span>{t.summaryStep.total}</span>
-                            <span>{pricing.total} {t.priceBar.currency}</span>
+                            <span>{pricing.total} {config.currency}</span>
                         </div>
                     </div>
                 </div>
