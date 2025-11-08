@@ -1,5 +1,7 @@
 // translations.js — enkel inbyggd översättnings-lookup
 // Används för att visa statisk text i UI (sv/en)
+const LANGUAGE = import.meta.env.VITE_LANGUAGE || 'en';
+
 const translations = {
     sv: {
         uploadStep: {
@@ -81,6 +83,6 @@ const translations = {
     },
 };
 
-export const getTranslations = (lang) => {
-    return lang === 'sv' ? translations.sv : translations.en;
+export const getTranslations = () => {
+    return LANGUAGE === 'sv' ? translations.sv : translations.en;
 };

@@ -8,7 +8,7 @@ import { getTranslations } from '../utils/translations';
 function PriceBar() {
     const [isOpen, setIsOpen] = useState(false);
     const { pricing, config, selections, currentStep, file, nextStep, currency } = useConfigStore();
-        const t = getTranslations(import.meta.env.VITE_LANGUAGE);
+        const t = getTranslations();
 
     // Hjälpfunktion för att visa valt namn för ett visst steg
     const getSelectionName = (key) => {

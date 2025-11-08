@@ -7,7 +7,7 @@ import { useCheckout } from '../store/checkout';
 function SummaryStep() {
     // Hämta nödvändigt globalt state från store
     const { config, selections, pricing, file } = useConfigStore();
-    const t = getTranslations(import.meta.env.VITE_LANGUAGE);
+    const t = getTranslations();
     const { handleCheckout, loading } = useCheckout();
 
     return (

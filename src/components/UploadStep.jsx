@@ -9,7 +9,7 @@ import { getTranslations } from '../utils/translations';
 function UploadStep() {
     const fileInputRef = useRef(null);
     const { file, setFile } = useConfigStore();
-    const t = getTranslations(import.meta.env.VITE_LANGUAGE);
+    const t = getTranslations();
 
     // Sätt filen i store när användaren väljer en fil
     const handleFileChange = (e) => {

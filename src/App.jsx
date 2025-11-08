@@ -27,7 +27,7 @@ function App() {
     </div>
   );
   // Hämta översättningar baserat på valt språk    
-  const t = getTranslations(import.meta.env.VITE_LANGUAGE);
+  const t = getTranslations();
   // Steg-definitionen (titlar och vilken data som ska visas per steg)
   const steps = [
     { title: t.steps[0].title, data: config.glassTypes, key: 'glassType' },
