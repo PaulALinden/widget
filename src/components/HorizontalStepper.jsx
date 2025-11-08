@@ -1,3 +1,5 @@
+// HorizontalStepper.jsx — visuell stegindikator med back-knapp
+// Visar vilka steg som är klara, aktivt steg och progresslinje
 import { FaCheck } from "react-icons/fa";
 import arrow from "../assets/arrow.svg";
 import { useConfigStore } from '../store/configStore';

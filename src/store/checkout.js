@@ -1,7 +1,11 @@
-// src/hooks/useCheckout.js
+// checkout.js — Hook som hanterar checkout-flödet (ligger i store)
+// Ansvar: ladda upp eventuella filer, anropa backend för att skapa
+// en Stripe Checkout-session och navigera användaren dit.
 import { useConfigStore } from './configStore';
 import { getTranslations } from '../utils/translations';
 import { create } from 'zustand';
+
+const CHECKOUT_API_URL = import.meta.env.VITE_CHECKOUT_API_URL;
 
 const useCheckoutStore = create((set) => ({
     loading: false,
@@ -14,14 +18,18 @@ export const useCheckout = () => {
     const t = getTranslations(currency).summaryStep;
 
     const handleCheckout = async () => {
+        // Starta loading-state
         setLoading(true);
         try {
+            // Om användaren laddat upp en fil, ladda upp den först
             let uploadedFileId = null;
             if (file) {
                 const uploadResult = await uploadFile();
                 uploadedFileId = uploadResult.fileId;
             }
-            const response = await fetch('http://localhost:3001/create-checkout-session', {
+
+            // Anropa backend för att skapa en Stripe Checkout-session
+            const response = await fetch(CHECKOUT_API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -37,6 +45,7 @@ export const useCheckout = () => {
                 }),
             });
             const data = await response.json();
+            // Navigera användaren till den skapade Stripe-sessionen
             window.location.href = data.url;
         } catch (error) {
             console.error('Checkout error:', error);

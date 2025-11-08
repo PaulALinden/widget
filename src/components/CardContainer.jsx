@@ -1,9 +1,12 @@
+// CardContainer.jsx — wrapper som visar flera Card-komponenter för ett steg
+// Använder store.updateSelection för att spara valet och går automatiskt vidare till nästa steg
 import { useConfigStore } from '../store/configStore';
 import Card from './Card';
 
 function CardContainer({ title, data, selectionKey }) {
     const { selections, updateSelection, nextStep } = useConfigStore();
 
+    // När ett kort väljs uppdateras selection i store och går vidare
     const handleSelect = async (itemId) => {
         await updateSelection(selectionKey, itemId);
         nextStep();  // Gå till nästa steg automatiskt

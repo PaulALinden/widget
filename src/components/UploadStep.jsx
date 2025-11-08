@@ -1,4 +1,5 @@
-// src/components/UploadStep.jsx
+// UploadStep.jsx — UI för att ladda upp recept/synstyrka
+// Enkel fil-vy som sparar filen i global store via setFile
 import { useRef } from 'react';
 import { useConfigStore } from '../store/configStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,10 +11,12 @@ function UploadStep() {
     const { file, setFile, currency } = useConfigStore();
     const t = getTranslations(currency).uploadStep;
 
+    // Sätt filen i store när användaren väljer en fil
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
     };
 
+    // Klicka på kortet för att öppna filväljaren
     const handleCardClick = () => {
         fileInputRef.current?.click();
     };

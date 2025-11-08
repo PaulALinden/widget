@@ -1,4 +1,5 @@
-// src/components/PriceBar.jsx
+// PriceBar.jsx — visar en kompakt pris- och sammanfattningsvy längst ner
+// Ger snabb åtkomst till vald info och möjlighet att visa hela sammanfattningen
 import { useState } from 'react';
 import { FaTimes, FaUpload } from 'react-icons/fa';
 import { useConfigStore } from '../store/configStore';
@@ -9,6 +10,7 @@ function PriceBar() {
     const { pricing, config, selections, currentStep, file, nextStep, currency } = useConfigStore();
     const t = getTranslations(currency).summaryStep; // Reuse summaryStep translations for consistency
 
+    // Hjälpfunktion för att visa valt namn för ett visst steg
     const getSelectionName = (key) => {
         if (!config) return '-';
         if (key === 'glassType') {
@@ -23,6 +25,7 @@ function PriceBar() {
         return '-';
     };
 
+    // Hantera knapp i pricebar för att gå vidare efter upload
     const handleUpload = async () => {
         console.log('Uploading file:', file);
         nextStep();

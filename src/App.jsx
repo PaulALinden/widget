@@ -1,4 +1,6 @@
-// src/App.jsx
+// App.jsx — Huvudkomponenten för konfiguratorn
+// Visar stegvis flöde (glas, toning, båge, upload, summary)
+// Ansvar: orchestrera steg och visa rätt stegkomponent
 import { useEffect } from 'react';
 import CardContainer from './components/CardContainer';
 import HorizontalStepper from './components/HorizontalStepper';
@@ -10,18 +12,22 @@ import { useConfigStore } from './store/configStore';
 import { getTranslations } from './utils/translations';
 
 function App() {
+  //Config store
   const { config, loadConfig, currentStep } = useConfigStore();
 
+  //Ladda config vid mount
   useEffect(() => {
     loadConfig();
   }, []);
 
+  // Om config ännu inte är laddad visar vi en spinner
   if (!config)
     return (
       <Spinner/>
     );
-
+ // Hämta översättningar baserat på valt språk    
   const t = getTranslations(import.meta.env.VITE_LANGUAGE);
+  // Steg-definitionen (titlar och vilken data som ska visas per steg)
   const steps = [
     { title: t.steps[0].title, data: config.glassTypes, key: 'glassType' },
     { title: t.steps[1].title, data: config.tints, key: 'tint' },
@@ -29,7 +35,7 @@ function App() {
     { title: t.steps[3].title, type: 'upload' },
     { title: t.steps[4].title, type: 'summary' },
   ];
-
+  // Hämta data för nuvarande steg
   const currentStepData = steps[currentStep];
 
   return (

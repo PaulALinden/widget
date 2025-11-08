@@ -1,9 +1,11 @@
-// src/components/SummaryStep.jsx
+// SummaryStep.jsx — visar en genomgång av användarens val och pris
+// Innehåller knapp för att gå vidare till betalning (använder useCheckout)
 import { useConfigStore } from '../store/configStore';
 import { getTranslations } from '../utils/translations';
 import { useCheckout } from '../store/checkout';
 
 function SummaryStep() {
+    // Hämta nödvändigt globalt state från store
     const { config, selections, pricing, file, currency } = useConfigStore();
     const t = getTranslations(currency).summaryStep;
     const { handleCheckout, loading } = useCheckout();
@@ -52,6 +54,7 @@ function SummaryStep() {
                     </div>
                 </div>
                 
+                {/* Betal-knapp: skickar användaren vidare via checkout-hook */}
                 <button
                     onClick={handleCheckout}
                     disabled={loading}

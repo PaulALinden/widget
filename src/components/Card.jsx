@@ -1,5 +1,6 @@
-// Card.jsx
-function Card({ imageSrc, title, description, onClick, selected }) {
+// Card.jsx — enkel presentational-komponent för ett alternativ (glas, toning eller båge)
+// Props: imageSrc, title, description, onClick
+function Card({ imageSrc, title, description, onClick }) {
     return (
         <div
             onClick={onClick}

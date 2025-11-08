@@ -1,3 +1,4 @@
+// Spinner.jsx — enkel laddningsindikator som visas medan config laddas
 function Spinner() {
     return (
         <div className="min-h-screen w-screen bg-[#f1e4de] flex items-center justify-center">

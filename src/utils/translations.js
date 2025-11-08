@@ -1,4 +1,5 @@
-// src/utils/translations.js
+// translations.js — enkel inbyggd översättnings-lookup
+// Används för att visa statisk text i UI (sv/en)
 const translations = {
     sv: {
         uploadStep: {
