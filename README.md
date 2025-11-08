@@ -12,15 +12,15 @@ En liten, lättvikts React-widget byggd med Vite. Projektet innehåller en enkel
 
 1. Installera beroenden:
 
-```cmd
-npm install
-```
+   ```cmd
+   npm install
+   ```
 
 2. Starta dev-servern:
 
-```cmd
-npm run dev
-```
+   ```cmd
+   npm run dev
+   ```
 
 3. Öppna webbläsaren på den URL Vite skriver ut (ofta <http://localhost:5173>).
 
@@ -71,8 +71,39 @@ Använd dessa som utgångspunkt när du utökar funktionalitet.
 
 1. Bygg för produktion:
 
-```cmd
-npm run build
-```
+   ```cmd
+   npm run build
+   ```
 
 2. Servera innehållet i `dist/` med valfri statisk-server eller deploy-tjänst (Netlify, Vercel, Azure Static Web Apps, GitHub Pages med lämplig setup).
+
+## Förbättringsförslag
+
+### UI/UX
+
+- Bättre feedback vid laddning och fel (ex. filuppladdning).
+- Konsekvent färgtema, marginaler och typografi (globalt).
+- Möjlighet att gå tillbaka och ändra tidigare val.
+- Tydligare summering innan köp.
+
+### Dataflöde
+
+- Optimera state-hantering och async-funktioner.
+- Lägg till `cart: []` i store och funktion för att spara val i varukorg.
+- Spara varukorgen i localStorage.
+
+### Övrigt
+
+- Lägg till enhetstester för kritiska funktioner.
+- Förbättra tillgänglighet (tabb-ordning, aria-labels).
+- Säkerställ responsiv design för mobil och surfplatta.
+- Dokumentera komponenter och dataflöde.
+
+## Exempel på .env-fil
+
+```env
+VITE_API_URL=http://localhost:3001/api
+VITE_CHECKOUT_URL=http://localhost:3001/api/checkout/create-session
+VITE_STORE_ID=store_malmo
+VITE_LANGUAGE=sv
+```
