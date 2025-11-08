@@ -6,7 +6,7 @@ const translations = {
     sv: {
         uploadStep: {
             title: 'Ladda upp synstyrka',
-            uploadPrompt: 'Klicka för att ladda upp fil',
+            uploadPrompt: 'Ladda upp fil',
             fileTypes: 'PDF, JPG eller PNG',
         },
         summaryStep: {
@@ -32,7 +32,8 @@ const translations = {
             buttonText: 'Dina glas',
             currency: 'SEK',
             toggleOpen: '▼',
-            toggleClose: '▲'
+            toggleClose: '▲',
+            prescription: 'Synstyrka',
         },
         steps: [
             { title: 'Välj glastyp' },
@@ -45,7 +46,7 @@ const translations = {
     en: {
         uploadStep: {
             title: 'Upload prescription',
-            uploadPrompt: 'Click to upload file',
+            uploadPrompt: 'Upload file',
             fileTypes: 'PDF, JPG, or PNG',
         },
         summaryStep: {
@@ -71,7 +72,8 @@ const translations = {
             buttonText: 'Your glasses',
             currency: 'SEK',
             toggleOpen: '▼',
-            toggleClose: '▲'
+            toggleClose: '▲',
+            prescription: 'Prescription',
         },
         steps: [
             { title: 'Choose glass type' },

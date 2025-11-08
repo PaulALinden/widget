@@ -69,7 +69,7 @@ function PriceBar() {
                         )}
                         {file && (
                             <div className="flex justify-between text-sm">
-                                <span>{t.prescription}</span>
+                                <span>{t.priceBar.prescription}</span>
                                 <span className="font-semibold">{file.name}</span>
                             </div>
                         )}
