@@ -74,7 +74,7 @@ function PriceBar() {
                             </div>
                         )}
                         <div className="flex justify-between font-bold text-lg pt-2 border-t">
-                            <span>{t.total}</span>
+                            <span>{t.priceBar.total}</span>
                             <span>{pricing.basePrice || 0} {config?.currency}</span>
                         </div>
                     </div>

@@ -29,6 +29,7 @@ const translations = {
         },
         priceBar: {
             title: 'Dina val',
+            total: 'Totalt',
             buttonText: 'Dina glas',
             currency: 'SEK',
             toggleOpen: '▼',
@@ -69,6 +70,7 @@ const translations = {
         },
         priceBar: {
             title: 'Your selections',
+            total: 'Total',
             buttonText: 'Your glasses',
             currency: 'SEK',
             toggleOpen: '▼',

@@ -36,7 +36,7 @@ function SummaryStep() {
                     <hr />
                     <div>
                         <div className="flex justify-between">
-                            <span>{t.base}</span>
+                            <span>{t.summaryStep.base}</span>
                             <span>{pricing.basePrice} {t.priceBar.currency}</span>
                         </div>
                         <div className="flex justify-between">
