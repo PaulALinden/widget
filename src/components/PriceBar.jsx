@@ -27,7 +27,6 @@ function PriceBar() {
 
     // Hantera knapp i pricebar för att gå vidare efter upload
     const handleUpload = async () => {
-        console.log('Uploading file:', file);
         nextStep();
     };
 

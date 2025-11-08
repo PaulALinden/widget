@@ -4,7 +4,7 @@ import { useConfigStore } from '../store/configStore';
 import Card from './Card';
 
 function CardContainer({ title, data, selectionKey }) {
-    const { selections, updateSelection, nextStep } = useConfigStore();
+    const { updateSelection, nextStep } = useConfigStore();
 
     // När ett kort väljs uppdateras selection i store och går vidare
     const handleSelect = async (itemId) => {
@@ -22,7 +22,7 @@ function CardContainer({ title, data, selectionKey }) {
                         imageSrc={item.image}
                         title={item.name}
                         description={item.description}
-                        selected={selections[selectionKey] === item.id}
+                        price={item.price}
                         onClick={() => handleSelect(item.id)}
                     />
                 ))}

@@ -5,7 +5,7 @@ import { useConfigStore } from './configStore';
 import { getTranslations } from '../utils/translations';
 import { create } from 'zustand';
 
-const CHECKOUT_API_URL = import.meta.env.VITE_CHECKOUT_API_URL;
+const CHECKOUT_URL = import.meta.env.VITE_CHECKOUT_URL;
 
 const useCheckoutStore = create((set) => ({
     loading: false,
@@ -29,7 +29,7 @@ export const useCheckout = () => {
             }
 
             // Anropa backend för att skapa en Stripe Checkout-session
-            const response = await fetch(CHECKOUT_API_URL, {
+            const response = await fetch(CHECKOUT_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -43,8 +43,8 @@ export const useCheckout = () => {
                         frames: config.frames,
                     },
                 }),
-            });
-            const data = await response.json();
+            });          
+            const data = await response.json();          
             // Navigera användaren till den skapade Stripe-sessionen
             window.location.href = data.url;
         } catch (error) {

@@ -72,6 +72,5 @@ const translations = {
 };
 
 export const getTranslations = (lang) => {
-    console.log(lang);
     return lang === 'swe' ? translations.sv : translations.en;
 };
