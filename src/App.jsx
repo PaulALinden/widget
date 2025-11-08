@@ -13,18 +13,19 @@ import { getTranslations } from './utils/translations';
 
 function App() {
   //Config store
-  const { config, loadConfig, currentStep } = useConfigStore();
+  const { config, loadConfig, currentStep, loading } = useConfigStore();
 
   //Ladda config vid mount
   useEffect(() => {
     loadConfig();
   }, []);
 
-  // Om config ännu inte är laddad visar vi en spinner
-  if (!config)
-    return (
-      <Spinner/>
-    );
+  // Om config ännu inte är laddad visar vi en spinner som täcker hela skärmen
+  if (!config) return (
+    <div className="min-h-screen w-screen bg-[#f1e4de] flex items-center justify-center">
+      <Spinner />
+    </div>
+  );
  // Hämta översättningar baserat på valt språk    
   const t = getTranslations(import.meta.env.VITE_LANGUAGE);
   // Steg-definitionen (titlar och vilken data som ska visas per steg)
@@ -40,6 +41,8 @@ function App() {
 
   return (
     <div className="min-h-screen w-screen bg-[#f1e4de] flex flex-col justify-between gap-6">
+      {/* Visa overlay-spinner vid async-aktioner (t.ex. prisberäkning) */}
+      {loading && <Spinner />}
       <section className="h-24 w-full flex items-center justify-center">
         <HorizontalStepper steps={steps} current={currentStep} />
       </section>

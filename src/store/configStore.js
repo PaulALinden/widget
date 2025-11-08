@@ -9,6 +9,8 @@ const STORE_ID = import.meta.env.VITE_STORE_ID;
 export const useConfigStore = create((set, get) => ({
     storeId: STORE_ID,
     config: null,
+    // Loading-flagga används för att visa spinner under async-operationer
+    loading: false,
     selections: {},
     pricing: { total: 0 },
     currentStep: 0,
@@ -16,8 +18,15 @@ export const useConfigStore = create((set, get) => ({
 
     loadConfig: async () => {
         // Ladda konfigurering från backend. Använder STORE_ID från environment.
-        const response = await productsApi.getStoreConfig(STORE_ID);
-        set({ config: response.data, storeId: STORE_ID });
+        set({ loading: true });
+        try {
+            const response = await productsApi.getStoreConfig(STORE_ID);
+            set({ config: response.data, storeId: STORE_ID });
+        } catch (err) {
+            console.error('Load config failed:', err);
+        } finally {
+            set({ loading: false });
+        }
     },
 
     setFile: (file) => set({ file }),
@@ -25,7 +34,8 @@ export const useConfigStore = create((set, get) => ({
     updateSelection: async (key, value) => {
         // Uppdatera urval lokalt först
         set((state) => ({
-            selections: { ...state.selections, [key]: value }
+            selections: { ...state.selections, [key]: value },
+            loading: true,
         }));
         // Be backend räkna ut pris baserat på current selections
         const { selections } = get();
@@ -36,6 +46,8 @@ export const useConfigStore = create((set, get) => ({
             set({ pricing: response.data });
         } catch (error) {
             console.error('Price failed:', error);
+        } finally {
+            set({ loading: false });
         }
     },
 
@@ -43,6 +55,7 @@ export const useConfigStore = create((set, get) => ({
         const { file } = get();
         if (!file) return;
         // Ladda upp fil via API och spara fileId i store
+        set({ loading: true });
         try {
             const response = await productsApi.uploadPrescription(file);
             set({ fileId: response.data.fileId });
@@ -50,6 +63,8 @@ export const useConfigStore = create((set, get) => ({
         } catch (error) {
             console.error('Upload failed:', error);
             throw error;
+        } finally {
+            set({ loading: false });
         }
     },
 
