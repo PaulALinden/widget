@@ -26,10 +26,10 @@ En liten, lättvikts React-widget byggd med Vite. Projektet innehåller en enkel
 
 4. Testa den verkliga widgeten (preview)
 
-```cmd
+   ```cmd
    npm run build
    npm run preview
-```
+   ```
 Kör en lokal preview av byggd produktion.
 Använd detta för att testa widgeten exakt som den skulle köras i produktion.
 
