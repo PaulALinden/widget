@@ -24,6 +24,15 @@ En liten, lättvikts React-widget byggd med Vite. Projektet innehåller en enkel
 
 3. Öppna webbläsaren på den URL Vite skriver ut (ofta <http://localhost:5173>).
 
+4. Testa den verkliga widgeten (preview)
+
+```cmd
+   npm run build
+   npm run preview
+```
+Kör en lokal preview av byggd produktion.
+Använd detta för att testa widgeten exakt som den skulle köras i produktion.
+
 ## Viktiga scripts
 
 I `package.json` finns dessa scripts:
