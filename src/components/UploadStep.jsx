@@ -8,8 +8,8 @@ import { getTranslations } from '../utils/translations';
 
 function UploadStep() {
     const fileInputRef = useRef(null);
-    const { file, setFile, currency } = useConfigStore();
-    const t = getTranslations(currency).uploadStep;
+    const { file, setFile } = useConfigStore();
+    const t = getTranslations(import.meta.env.VITE_LANGUAGE);
 
     // Sätt filen i store när användaren väljer en fil
     const handleFileChange = (e) => {
@@ -23,7 +23,7 @@ function UploadStep() {
 
     return (
         <article className="flex flex-col items-center justify-center">
-            <h1 className="font-bold text-2xl mb-10 text-[#043451]">{t.title}</h1>
+            <h1 className="font-bold text-2xl mb-10 text-[#043451]">{t.uploadStep.title}</h1>
             <div
                 onClick={handleCardClick}
                 className="p-8 rounded-lg border-2 border-[#043451] w-96 cursor-pointer hover:bg-white"
@@ -41,9 +41,9 @@ function UploadStep() {
                         icon={faArrowUpFromBracket}
                     />
                     <p className="text-[#043451] font-semibold">
-                        {file ? file.name : t.uploadPrompt}
+                        {file ? file.name : t.uploadStep.uploadPrompt}
                     </p>
-                    <p className="text-sm text-gray-500">{t.fileTypes}</p>
+                    <p className="text-sm text-gray-500">{t.uploadStep.fileTypes}</p>
                 </div>
             </div>
         </article>

@@ -8,7 +8,7 @@ import { getTranslations } from '../utils/translations';
 function PriceBar() {
     const [isOpen, setIsOpen] = useState(false);
     const { pricing, config, selections, currentStep, file, nextStep, currency } = useConfigStore();
-    const t = getTranslations(currency).summaryStep; // Reuse summaryStep translations for consistency
+        const t = getTranslations(import.meta.env.VITE_LANGUAGE);
 
     // Hjälpfunktion för att visa valt namn för ett visst steg
     const getSelectionName = (key) => {
@@ -46,44 +46,36 @@ function PriceBar() {
                     >
                         <FaTimes />
                     </button>
-                    <h3 className="font-bold text-lg mb-4">{t.title}</h3>
-                    <div className="space-y-3 mb-6">
-                        <div className="flex justify-between">
-                            <span className="text-gray-600">{t.glassType}</span>
-                            <span className="font-semibold">{getSelectionName('glassType')}</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span className="text-gray-600">{t.tint}</span>
-                            <span className="font-semibold">{getSelectionName('tint')}</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span className="text-gray-600">{t.frame}</span>
-                            <span className="font-semibold">{getSelectionName('frame')}</span>
-                        </div>
+                    <h3 className="font-bold text-lg mb-4">{t.priceBar.title}</h3>
+                    <div className="space-y-2">
+                        {/* Visa individuella val och deras priser */}
+                        {selections.glassType && (
+                            <div className="flex justify-between text-sm">
+                                <span>{getSelectionName('glassType')}</span>
+                                <span>{config.glassTypes.find(g => g.id === selections.glassType)?.price || 0} {config?.currency}</span>
+                            </div>
+                        )}
+                        {selections.tint && (
+                            <div className="flex justify-between text-sm">
+                                <span>{getSelectionName('tint')}</span>
+                                <span>{config.tints.find(t => t.id === selections.tint)?.price || 0} {config?.currency}</span>
+                            </div>
+                        )}
+                        {selections.frame && (
+                            <div className="flex justify-between text-sm">
+                                <span>{getSelectionName('frame')}</span>
+                                <span>{config.frames.find(f => f.id === selections.frame)?.price || 0} {config?.currency}</span>
+                            </div>
+                        )}
                         {file && (
-                            <div className="flex justify-between">
-                                <span className="text-gray-600">{t.prescription}</span>
+                            <div className="flex justify-between text-sm">
+                                <span>{t.prescription}</span>
                                 <span className="font-semibold">{file.name}</span>
                             </div>
                         )}
-                    </div>
-                    <hr className="my-4" />
-                    <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                            <span>{t.base}</span>
-                            <span>{pricing.basePrice || 0} {config?.currency}</span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                            <span>{t.tax} ({pricing.taxPercent}%)</span>
-                            <span>{pricing.tax || 0} {config?.currency}</span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                            <span>{t.shipping}</span>
-                            <span>{pricing.shipping || 0} {config?.currency}</span>
-                        </div>
                         <div className="flex justify-between font-bold text-lg pt-2 border-t">
                             <span>{t.total}</span>
-                            <span>{pricing.total || 0} {config?.currency}</span>
+                            <span>{pricing.basePrice || 0} {config?.currency}</span>
                         </div>
                     </div>
                 </div>
@@ -97,7 +89,7 @@ function PriceBar() {
                             onClick={() => setIsOpen(!isOpen)}
                             className="cursor-pointer font-semibold text-[#043451] transition"
                         >
-                            {currency === 'sek' ? 'Dina glas' : 'Your glasses'} {pricing.total || 0} {config?.currency || 'SEK'} {isOpen ? '▼' : '▲'}
+                            {t.priceBar.buttonText} {pricing.basePrice || 0} {t.priceBar.currency} {isOpen ? t.priceBar.toggleOpen : t.priceBar.toggleClose}
                         </button>
                         <div className="flex-1 flex justify-end">
                             {isUploadStep && (

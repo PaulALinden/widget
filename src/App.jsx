@@ -26,7 +26,7 @@ function App() {
       <Spinner />
     </div>
   );
- // Hämta översättningar baserat på valt språk    
+  // Hämta översättningar baserat på valt språk    
   const t = getTranslations(import.meta.env.VITE_LANGUAGE);
   // Steg-definitionen (titlar och vilken data som ska visas per steg)
   const steps = [

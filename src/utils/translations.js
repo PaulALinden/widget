@@ -22,10 +22,15 @@ const translations = {
             btnProcessing: 'Bearbetar...',
             btnPay: 'Gå till betalning',
             error: 'Något gick fel. Försök igen.',
+            noSelection: '-',
+            fileIcon: '📄'
         },
         priceBar: {
             title: 'Dina val',
             buttonText: 'Dina glas',
+            currency: 'SEK',
+            toggleOpen: '▼',
+            toggleClose: '▲'
         },
         steps: [
             { title: 'Välj glastyp' },
@@ -56,10 +61,15 @@ const translations = {
             btnProcessing: 'Processing...',
             btnPay: 'Proceed to payment',
             error: 'Something went wrong. Try again.',
+            noSelection: '-',
+            fileIcon: '📄'
         },
         priceBar: {
             title: 'Your selections',
             buttonText: 'Your glasses',
+            currency: 'SEK',
+            toggleOpen: '▼',
+            toggleClose: '▲'
         },
         steps: [
             { title: 'Choose glass type' },
@@ -72,5 +82,5 @@ const translations = {
 };
 
 export const getTranslations = (lang) => {
-    return lang === 'swe' ? translations.sv : translations.en;
+    return lang === 'sv' ? translations.sv : translations.en;
 };

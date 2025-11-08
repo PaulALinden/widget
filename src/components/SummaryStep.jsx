@@ -6,8 +6,8 @@ import { useCheckout } from '../store/checkout';
 
 function SummaryStep() {
     // Hämta nödvändigt globalt state från store
-    const { config, selections, pricing, file, currency } = useConfigStore();
-    const t = getTranslations(currency).summaryStep;
+    const { config, selections, pricing, file } = useConfigStore();
+    const t = getTranslations(import.meta.env.VITE_LANGUAGE);
     const { handleCheckout, loading } = useCheckout();
 
     return (
@@ -16,40 +16,40 @@ function SummaryStep() {
             <div className="p-8 rounded-lg border-2 border-[#043451] w-96">
                 <div className="space-y-4 mb-6">
                     <div>
-                        <h3 className="font-semibold">{t.glassType}</h3>
-                        <p>{config.glassTypes.find(g => g.id === selections.glassType)?.name || '-'}</p>
+                        <h3 className="font-semibold">{t.summaryStep.glassType}</h3>
+                        <p>{config.glassTypes.find(g => g.id === selections.glassType)?.name || t.summaryStep.noSelection}</p>
                     </div>
                     <div>
-                        <h3 className="font-semibold">{t.tint}</h3>
-                        <p>{config.tints.find(t => t.id === selections.tint)?.name || '-'}</p>
+                        <h3 className="font-semibold">{t.summaryStep.tint}</h3>
+                        <p>{config.tints.find(t => t.id === selections.tint)?.name || t.summaryStep.noSelection}</p>
                     </div>
                     <div>
-                        <h3 className="font-semibold">{t.frame}</h3>
-                        <p>{config.frames.find(f => f.id === selections.frame)?.name || '-'}</p>
+                        <h3 className="font-semibold">{t.summaryStep.frame}</h3>
+                        <p>{config.frames.find(f => f.id === selections.frame)?.name || t.summaryStep.noSelection}</p>
                     </div>
                     {file && (
                         <div>
-                            <h3 className="font-semibold">{t.prescription}</h3>
-                            <p className="text-sm text-gray-600">📄 {file.name}</p>
+                            <h3 className="font-semibold">{t.summaryStep.prescription}</h3>
+                            <p className="text-sm text-gray-600">{t.summaryStep.fileIcon} {file.name}</p>
                         </div>
                     )}
                     <hr />
                     <div>
                         <div className="flex justify-between">
                             <span>{t.base}</span>
-                            <span>{pricing.basePrice} {config.currency}</span>
+                            <span>{pricing.basePrice} {t.priceBar.currency}</span>
                         </div>
                         <div className="flex justify-between">
-                            <span>{t.tax}</span>
-                            <span>{pricing.tax} {config.currency}</span>
+                            <span>{t.summaryStep.tax}</span>
+                            <span>{pricing.tax} {t.priceBar.currency}</span>
                         </div>
                         <div className="flex justify-between">
-                            <span>{t.shipping}</span>
-                            <span>{pricing.shipping} {config.currency}</span>
+                            <span>{t.summaryStep.shipping}</span>
+                            <span>{pricing.shipping} {t.priceBar.currency}</span>
                         </div>
                         <div className="flex justify-between font-bold text-lg mt-2">
-                            <span>{t.total}</span>
-                            <span>{pricing.total} {config.currency}</span>
+                            <span>{t.summaryStep.total}</span>
+                            <span>{pricing.total} {t.priceBar.currency}</span>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ function SummaryStep() {
                     disabled={loading}
                     className="cursor-pointer w-full bg-[#043451] text-white py-3 px-4 rounded font-semibold hover:bg-[#032940] disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                    {loading ? t.btnProcessing : t.btnPay}
+                    {loading ? t.summaryStep.btnProcessing : t.summaryStep.btnPay}
                 </button>
             </div>
         </article>
